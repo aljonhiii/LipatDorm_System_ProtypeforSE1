@@ -1,0 +1,1125 @@
+<project>
+    <name>LipatDorm</name>
+
+    <title>
+        LipatDorm: A Budget-Friendly Micro-Moving and Cargo-Sharing Platform
+        for Dormitory Students and Renters
+    </title>
+
+    <purpose>
+        Create a modern, responsive landing page prototype for LipatDorm.
+        The website should demonstrate how the system helps dormitory students
+        and renters move their belongings at a lower cost while promoting
+        responsible consumption and reuse under SDG 12.
+    </purpose>
+
+    <design_goal>
+        The landing page MUST be divided into separate full-screen sections.
+        Each section should represent one major feature or concept of the system.
+
+        Use vertical snap scrolling so that scrolling moves naturally from
+        one section to the next.
+
+        Each section should feel like a separate presentation slide while
+        still being part of one continuous website.
+    </design_goal>
+
+    <scroll_behavior>
+        <type>Vertical Snap Scrolling</type>
+
+        <css>
+            scroll-snap-type: y mandatory;
+        </css>
+
+        <section_behavior>
+            Each section should use approximately 100vh height.
+            Each section should have:
+            - scroll-snap-align: start
+            - responsive layout
+            - smooth entrance animation
+            - content reveal animation
+        </section_behavior>
+
+        <navigation>
+            Add vertical navigation dots on the right side of the screen.
+            Each dot represents one section.
+
+            The active dot must change when the user reaches another section.
+
+            Clicking a navigation dot should smoothly scroll to its section.
+        </navigation>
+
+        <section_counter>
+            Display a small section counter such as:
+
+            01 / 21
+            02 / 21
+            03 / 21
+
+            Update the number based on the currently visible section.
+        </section_counter>
+    </scroll_behavior>
+
+    <visual_style>
+        <theme>Modern Eco-Tech Transportation</theme>
+
+        <colors>
+            <primary>Deep Green</primary>
+            <secondary>Fresh Green</secondary>
+            <accent>Orange / Yellow</accent>
+            <background>Warm Off-White</background>
+            <dark_background>Dark Green / Charcoal</dark_background>
+        </colors>
+
+        <style>
+            Use:
+            - large modern typography
+            - rounded cards
+            - soft shadows
+            - subtle gradients
+            - floating UI cards
+            - clean spacing
+            - modern icons
+            - transportation illustrations
+            - map visuals
+            - cargo/furniture illustrations
+            - smooth animations
+            - subtle parallax effects
+        </style>
+
+        <target_audience>
+            Dormitory students, renters, local drivers, vehicle owners,
+            buyers, sellers, and people interested in sustainable reuse.
+        </target_audience>
+    </visual_style>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 01 -->
+    <!-- ========================================================= -->
+
+    <section id="hero">
+        <number>01</number>
+
+        <name>Hero / Opening</name>
+
+        <headline>
+            MOVE SMART. SPEND LESS. WASTE LESS.
+        </headline>
+
+        <description>
+            LipatDorm is a budget-friendly micro-moving and cargo-sharing
+            platform designed for dormitory students and renters.
+        </description>
+
+        <buttons>
+            <button>Book a Move</button>
+            <button>Explore Features</button>
+        </buttons>
+
+        <visual>
+            Show a dormitory environment with:
+            - small pickup / multicab
+            - boxes
+            - electric fan
+            - mattress
+            - study table
+            - plastic drawers
+            - route/map elements
+            - floating booking cards
+        </visual>
+
+        <badge>
+            SDG 12 — Responsible Consumption and Production
+        </badge>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 02 -->
+    <!-- ========================================================= -->
+
+    <section id="problem">
+        <number>02</number>
+
+        <name>The Problem</name>
+
+        <headline>
+            MOVING SHOULD NOT BE THIS EXPENSIVE.
+        </headline>
+
+        <cards>
+            <card>
+                <title>Expensive</title>
+                <description>
+                    Large moving trucks can be too expensive for short-distance
+                    dormitory moves.
+                </description>
+            </card>
+
+            <card>
+                <title>Inefficient</title>
+                <description>
+                    Students may need multiple trips using small vehicles.
+                </description>
+            </card>
+
+            <card>
+                <title>Wasteful</title>
+                <description>
+                    Students may abandon or throw away usable furniture and
+                    appliances because transporting them is difficult.
+                </description>
+            </card>
+        </cards>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 03 -->
+    <!-- ========================================================= -->
+
+    <section id="solution">
+        <number>03</number>
+
+        <name>The LipatDorm Solution</name>
+
+        <headline>
+            ONE PLATFORM. A SMARTER WAY TO MOVE.
+        </headline>
+
+        <features>
+            <feature>
+                <title>Right-Sized Rides</title>
+                <description>
+                    Match cargo with appropriately sized local vehicles.
+                </description>
+            </feature>
+
+            <feature>
+                <title>Cargo-Sharing</title>
+                <description>
+                    Students moving in similar directions can share one trip
+                    and split the cost.
+                </description>
+            </feature>
+
+            <feature>
+                <title>Pass-It-On</title>
+                <description>
+                    Give usable furniture and appliances another owner instead
+                    of throwing them away.
+                </description>
+            </feature>
+        </features>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 04 -->
+    <!-- ========================================================= -->
+
+    <section id="right-sized-rides">
+        <number>04</number>
+
+        <name>Right-Sized Rides</name>
+
+        <headline>
+            THE RIGHT VEHICLE FOR THE RIGHT CARGO.
+        </headline>
+
+        <description>
+            LipatDorm connects students with local owners of suitable
+            small vehicles such as multicabs, small pickups, and utility vans.
+        </description>
+
+        <vehicle_cards>
+            <vehicle>Multicab</vehicle>
+            <vehicle>Small Pickup</vehicle>
+            <vehicle>Utility Van</vehicle>
+        </vehicle_cards>
+
+        <visual>
+            Show different cargo sizes being matched with appropriate vehicles.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 05 -->
+    <!-- ========================================================= -->
+
+    <section id="smart-booking">
+        <number>05</number>
+
+        <name>Smart Booking</name>
+
+        <headline>
+            BOOK YOUR MOVE IN A FEW SIMPLE STEPS.
+        </headline>
+
+        <booking_interface>
+            <field>Pickup Location</field>
+            <field>Destination</field>
+            <field>Date</field>
+            <field>Time</field>
+            <field>Cargo Type</field>
+            <field>Vehicle Type</field>
+        </booking_interface>
+
+        <button>
+            Get Estimated Fare
+        </button>
+
+        <visual>
+            Show a realistic booking interface inside a floating phone or
+            dashboard mockup.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 06 -->
+    <!-- ========================================================= -->
+
+    <section id="map-coordination">
+        <number>06</number>
+
+        <name>Map &amp; Route Coordination</name>
+
+        <headline>
+            PLAN THE ROUTE. COORDINATE THE MOVE.
+        </headline>
+
+        <description>
+            LipatDorm uses Leaflet.js to display pickup locations,
+            destinations, drivers, shared cargo, and planned routes
+            on an interactive map.
+        </description>
+
+        <technology>
+            <map_library>Leaflet.js</map_library>
+            <map_tiles>OpenStreetMap</map_tiles>
+            <routing_service>OSRM</routing_service>
+        </technology>
+
+        <map_features>
+            <feature>Pickup Marker</feature>
+            <feature>Destination Marker</feature>
+            <feature>Driver Marker</feature>
+            <feature>Route Line</feature>
+            <feature>Distance</feature>
+            <feature>Estimated Travel Time</feature>
+            <feature>Vehicle Information</feature>
+            <feature>Trip Status</feature>
+        </map_features>
+
+        <visual>
+            Display a large interactive Leaflet.js map.
+            Show a sample pickup point, destination, driver position,
+            and route between locations.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 07 -->
+    <!-- ========================================================= -->
+
+    <section id="route-test">
+        <number>07</number>
+
+        <name>Sample Route Test</name>
+
+        <headline>
+            TEST A LIPATDORM ROUTE.
+        </headline>
+
+        <description>
+            Demonstrate how LipatDorm calculates and visualizes a sample
+            moving route using Leaflet.js and a routing service.
+        </description>
+
+        <sample_route>
+            <pickup>
+                WMSU Main Campus / Nearby Student Dorm Area
+            </pickup>
+
+            <destination>
+                KCC Mall de Zamboanga Area
+            </destination>
+
+            <vehicle>
+                Multicab
+            </vehicle>
+
+            <cargo>
+                5 Items
+            </cargo>
+        </sample_route>
+
+        <route_test_button>
+            Test Sample Route
+        </route_test_button>
+
+        <test_sequence>
+            <step>Display the map</step>
+            <step>Display pickup marker</step>
+            <step>Display destination marker</step>
+            <step>Calculate or load the road route</step>
+            <step>Draw the route on the map</step>
+            <step>Display distance</step>
+            <step>Display estimated travel time</step>
+            <step>Display driver marker</step>
+            <step>Animate the driver along the route</step>
+        </test_sequence>
+
+        <status_sequence>
+            READY
+            ROUTE CALCULATED
+            DRIVER ASSIGNED
+            DRIVER EN ROUTE
+            ARRIVED AT PICKUP
+            CARGO LOADED
+            IN TRANSIT
+            ARRIVED
+        </status_sequence>
+
+        <route_information_card>
+            <pickup>Student Dorm A</pickup>
+            <destination>Boarding House B</destination>
+            <distance>Sample distance</distance>
+            <eta>Sample ETA</eta>
+            <vehicle>Multicab</vehicle>
+            <cargo>5 Items</cargo>
+            <status>Driver En Route</status>
+        </route_information_card>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 08 -->
+    <!-- ========================================================= -->
+
+    <section id="pricing">
+        <number>08</number>
+
+        <name>Transparent Pricing</name>
+
+        <headline>
+            NO SURPRISE PRICES.
+        </headline>
+
+        <pricing_breakdown>
+            <item>Base Fare</item>
+            <item>Distance</item>
+            <item>Vehicle Type</item>
+            <item>Cargo Size</item>
+            <item>Optional Fees</item>
+        </pricing_breakdown>
+
+        <total>
+            Estimated Total
+        </total>
+
+        <message>
+            No guessing. No surprise bargaining.
+        </message>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 09 -->
+    <!-- ========================================================= -->
+
+    <section id="cargo-sharing">
+        <number>09</number>
+
+        <name>Cargo-Sharing</name>
+
+        <headline>
+            SHARE THE RIDE. SHARE THE COST.
+        </headline>
+
+        <description>
+            Students with similar pickup locations, destinations,
+            dates, and schedules can potentially share one vehicle.
+        </description>
+
+        <visual>
+            Show Student A and Student B connecting to one shared vehicle.
+        </visual>
+
+        <matching_factors>
+            Pickup Location
+            Destination
+            Date
+            Time
+            Cargo Size
+            Vehicle Capacity
+        </matching_factors>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 10 -->
+    <!-- ========================================================= -->
+
+    <section id="split-cost">
+        <number>10</number>
+
+        <name>Split the Cost</name>
+
+        <headline>
+            ONE TRIP. MULTIPLE STUDENTS. LOWER COST.
+        </headline>
+
+        <comparison>
+            <before>
+                Several separate trips
+            </before>
+
+            <after>
+                One consolidated trip
+            </after>
+        </comparison>
+
+        <visual>
+            Use animated cost cards showing how the total fare can be divided
+            among compatible cargo-sharing participants.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 11 -->
+    <!-- ========================================================= -->
+
+    <section id="pass-it-on">
+        <number>11</number>
+
+        <name>Pass-It-On</name>
+
+        <headline>
+            DON'T THROW IT AWAY. PASS IT ON.
+        </headline>
+
+        <description>
+            Students can list usable furniture, appliances, and other
+            dormitory items for sale, donation, or free claiming.
+        </description>
+
+        <items>
+            <item>Study Table</item>
+            <item>Electric Fan</item>
+            <item>Plastic Drawers</item>
+            <item>Chair</item>
+            <item>Small Appliance</item>
+        </items>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 12 -->
+    <!-- ========================================================= -->
+
+    <section id="marketplace">
+        <number>12</number>
+
+        <name>Community Marketplace</name>
+
+        <headline>
+            FIND WHAT YOU NEED NEAR YOUR NEXT DORM.
+        </headline>
+
+        <features>
+            <feature>Search Items</feature>
+            <feature>Category Filters</feature>
+            <feature>Price Filters</feature>
+            <feature>Free Items</feature>
+            <feature>Nearby Listings</feature>
+            <feature>Item Photos</feature>
+            <feature>Seller Information</feature>
+        </features>
+
+        <categories>
+            Furniture
+            Appliances
+            Study Materials
+            Dorm Essentials
+            Storage
+        </categories>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 13 -->
+    <!-- ========================================================= -->
+
+    <section id="swap-donate">
+        <number>13</number>
+
+        <name>Swap &amp; Donate</name>
+
+        <headline>
+            GIVE. SWAP. REUSE.
+        </headline>
+
+        <features>
+            <feature>Sell</feature>
+            <feature>Donate</feature>
+            <feature>Swap</feature>
+            <feature>Free Claim</feature>
+        </features>
+
+        <description>
+            Help usable products find another owner instead of becoming waste.
+        </description>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 14 -->
+    <!-- ========================================================= -->
+
+    <section id="local-reuse">
+        <number>14</number>
+
+        <name>Dorm-to-Dorm Reuse</name>
+
+        <headline>
+            KEEP DORM ITEMS IN CIRCULATION.
+        </headline>
+
+        <description>
+            Incoming students can acquire usable items from outgoing students,
+            reducing unnecessary purchases and disposal.
+        </description>
+
+        <flow>
+            Outgoing Student
+            →
+            Pass-It-On Listing
+            →
+            Incoming Student
+            →
+            Reused Dorm Item
+        </flow>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 15 -->
+    <!-- ========================================================= -->
+
+    <section id="smart-matching">
+        <number>15</number>
+
+        <name>Smart Matching</name>
+
+        <headline>
+            FIND THE BEST MATCH FOR YOUR MOVE.
+        </headline>
+
+        <matching_system>
+            Match users based on:
+            - pickup area
+            - destination
+            - date
+            - time
+            - cargo size
+            - vehicle capacity
+        </matching_system>
+
+        <visual>
+            Show multiple student requests being matched with one suitable
+            vehicle and route.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 16 -->
+    <!-- ========================================================= -->
+
+    <section id="tracking">
+        <number>16</number>
+
+        <name>Live Trip Tracking</name>
+
+        <headline>
+            KNOW WHERE YOUR MOVE IS.
+        </headline>
+
+        <tracking_features>
+            <feature>Driver Location</feature>
+            <feature>Route</feature>
+            <feature>ETA</feature>
+            <feature>Trip Status</feature>
+            <feature>Pickup Confirmation</feature>
+            <feature>Destination Confirmation</feature>
+        </tracking_features>
+
+        <status>
+            Driver En Route
+        </status>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 17 -->
+    <!-- ========================================================= -->
+
+    <section id="safety">
+        <number>17</number>
+
+        <name>Safety &amp; Trust</name>
+
+        <headline>
+            MOVE WITH MORE CONFIDENCE.
+        </headline>
+
+        <features>
+            <feature>Driver Verification</feature>
+            <feature>License Verification</feature>
+            <feature>Vehicle Registration</feature>
+            <feature>Driver Ratings</feature>
+            <feature>User Reviews</feature>
+            <feature>Issue Reporting</feature>
+            <feature>Trip Records</feature>
+        </features>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 18 -->
+    <!-- ========================================================= -->
+
+    <section id="moving-journey">
+        <number>18</number>
+
+        <name>Complete Moving Journey</name>
+
+        <headline>
+            FROM BOOKING TO ARRIVAL.
+        </headline>
+
+        <journey>
+            <step>1. Create Booking</step>
+            <step>2. Add Cargo</step>
+            <step>3. Choose Vehicle</step>
+            <step>4. Calculate Route</step>
+            <step>5. Match Driver</step>
+            <step>6. Pickup</step>
+            <step>7. Load Cargo</step>
+            <step>8. Travel</step>
+            <step>9. Arrive</step>
+            <step>10. Complete Trip</step>
+        </journey>
+
+        <visual>
+            Create a horizontal or curved journey timeline with animated
+            icons and progress indicators.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 19 -->
+    <!-- ========================================================= -->
+
+    <section id="sdg-impact">
+        <number>19</number>
+
+        <name>SDG 12 Impact</name>
+
+        <headline>
+            EVERY SHARED TRIP CAN MAKE A DIFFERENCE.
+        </headline>
+
+        <impact_metrics>
+            <metric>Shared Trips</metric>
+            <metric>Items Reused</metric>
+            <metric>Trips Consolidated</metric>
+            <metric>Estimated Fuel Saved</metric>
+            <metric>Estimated CO2 Reduction</metric>
+            <metric>Waste Diverted</metric>
+        </impact_metrics>
+
+        <important_note>
+            Environmental values shown in the prototype should be presented
+            as estimates unless supported by actual measured data.
+        </important_note>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 20 -->
+    <!-- ========================================================= -->
+
+    <section id="app-preview">
+        <number>20</number>
+
+        <name>App Preview</name>
+
+        <headline>
+            YOUR MOVE. YOUR ITEMS. YOUR TRIP.
+        </headline>
+
+        <screens>
+            <screen>Home Dashboard</screen>
+            <screen>Book a Move</screen>
+            <screen>Interactive Map</screen>
+            <screen>Cargo-Sharing</screen>
+            <screen>Pass-It-On</screen>
+            <screen>Marketplace</screen>
+            <screen>Trip Tracking</screen>
+            <screen>Profile</screen>
+        </screens>
+
+        <visual>
+            Display mobile application mockups showing the major LipatDorm
+            features.
+        </visual>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- SECTION 21 -->
+    <!-- ========================================================= -->
+
+    <section id="final-cta">
+        <number>21</number>
+
+        <name>Final Call to Action</name>
+
+        <headline>
+            READY TO MOVE SMARTER?
+        </headline>
+
+        <description>
+            Move what you need. Share when you can. Reuse what still matters.
+        </description>
+
+        <buttons>
+            <button>Book a Move</button>
+            <button>Explore LipatDorm</button>
+        </buttons>
+
+        <sdg_message>
+            LipatDorm supports SDG 12 by encouraging responsible consumption,
+            reuse, resource sharing, and more efficient transportation.
+        </sdg_message>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- GLOBAL FEATURES -->
+    <!-- ========================================================= -->
+
+    <global_features>
+
+        <user_management>
+            Registration
+            Login
+            Profile
+            Verification
+            Saved Addresses
+            Booking History
+            Notifications
+        </user_management>
+
+        <moving_management>
+            Booking
+            Scheduling
+            Cargo Management
+            Vehicle Selection
+            Pricing
+            Digital Receipt
+            Trip Status
+        </moving_management>
+
+        <driver_management>
+            Driver Registration
+            Vehicle Registration
+            License Verification
+            Vehicle Verification
+            Availability
+            Service Area
+            Ratings
+        </driver_management>
+
+        <community>
+            Pass-It-On
+            Marketplace
+            Buy
+            Sell
+            Donate
+            Swap
+            Reserve Item
+            Search
+            Filters
+        </community>
+
+        <sustainability>
+            Item Reuse Tracking
+            Shared Trip Tracking
+            Waste Diversion Estimates
+            Estimated Fuel Savings
+            Estimated CO2 Reduction
+            SDG 12 Dashboard
+            Responsible Consumption Tips
+        </sustainability>
+
+        <safety>
+            User Reports
+            Driver Reports
+            Damage Reports
+            Verification
+            Trip Records
+        </safety>
+
+        <administration>
+            Admin Dashboard
+            User Management
+            Driver Approval
+            Listing Moderation
+            Booking Monitoring
+            Reports
+            Analytics
+        </administration>
+
+    </global_features>
+
+
+    <!-- ========================================================= -->
+    <!-- MAP REQUIREMENTS -->
+    <!-- ========================================================= -->
+
+    <leaflet_requirements>
+
+        <library>
+            Leaflet.js
+        </library>
+
+        <tiles>
+            OpenStreetMap
+        </tiles>
+
+        <routing>
+            Use OSRM or another suitable routing service for the prototype.
+        </routing>
+
+        <important>
+            Leaflet.js is responsible for displaying the interactive map,
+            markers, routes, and map interface.
+
+            Leaflet.js itself does not calculate road routes.
+            A routing service should be used when actual road routing
+            is required.
+        </important>
+
+        <route_demo>
+            Include a working sample route test in Section 07.
+        </route_demo>
+
+    </leaflet_requirements>
+
+
+    <!-- ========================================================= -->
+    <!-- ANIMATION REQUIREMENTS -->
+    <!-- ========================================================= -->
+
+    <animations>
+
+        <scroll_reveal>
+            Elements should animate into view when their section becomes active.
+        </scroll_reveal>
+
+        <map_animation>
+            Driver marker can move along the sample route during the route test.
+        </map_animation>
+
+        <cards>
+            Cards should slightly translate or fade into view.
+        </cards>
+
+        <counters>
+            SDG impact numbers should animate when Section 19 becomes visible.
+        </counters>
+
+        <parallax>
+            Use subtle parallax effects where appropriate.
+            Do not make animations excessive or distracting.
+        </parallax>
+
+    </animations>
+
+
+    <!-- ========================================================= -->
+    <!-- RESPONSIVE DESIGN -->
+    <!-- ========================================================= -->
+
+    <responsive_design>
+
+        <desktop>
+            Use large layouts with multiple cards and large map visualizations.
+        </desktop>
+
+        <tablet>
+            Reorganize cards into fewer columns.
+        </tablet>
+
+        <mobile>
+            Stack content vertically.
+            Keep buttons accessible.
+            Keep the map usable.
+            Keep text readable.
+            Preserve the section-by-section snap experience.
+        </mobile>
+
+    </responsive_design>
+
+
+    <!-- ========================================================= -->
+    <!-- TECHNICAL REQUIREMENTS -->
+    <!-- ========================================================= -->
+
+    <technology>
+
+        <frontend>
+            HTML5
+            CSS3
+            JavaScript
+        </frontend>
+
+        <map>
+            Leaflet.js
+        </map>
+
+        <map_tiles>
+            OpenStreetMap
+        </map_tiles>
+
+        <routing>
+            OSRM
+        </routing>
+
+        <icons>
+            Use an appropriate open icon library if necessary.
+        </icons>
+
+    </technology>
+
+
+    <!-- ========================================================= -->
+    <!-- IMPORTANT PROTOTYPE RULES -->
+    <!-- ========================================================= -->
+
+    <prototype_rules>
+
+        <rule>
+            The page MUST be divided into 21 clearly identifiable sections.
+        </rule>
+
+        <rule>
+            Each section should occupy approximately one viewport height.
+        </rule>
+
+        <rule>
+            Use vertical snap scrolling between sections.
+        </rule>
+
+        <rule>
+            Do not combine all features into one long section.
+        </rule>
+
+        <rule>
+            Each section should focus on one major LipatDorm feature.
+        </rule>
+
+        <rule>
+            Include the Leaflet.js map demonstration.
+        </rule>
+
+        <rule>
+            Include the sample route test.
+        </rule>
+
+        <rule>
+            Make the prototype look like a real startup/product website,
+            not a simple school HTML page.
+        </rule>
+
+        <rule>
+            Keep the design clean, modern, professional, and student-friendly.
+        </rule>
+
+        <rule>
+            All buttons and navigation elements should have visible
+            interaction feedback.
+        </rule>
+
+        <rule>
+            Use sample/demo data where backend functionality is not available.
+        </rule>
+
+        <rule>
+            Clearly label estimated environmental impact values as estimates.
+        </rule>
+
+    </prototype_rules>
+
+
+    <!-- ========================================================= -->
+    <!-- FINAL EXPERIENCE -->
+    <!-- ========================================================= -->
+
+    <final_experience>
+
+        The user should feel like they are scrolling through an interactive
+        presentation of the complete LipatDorm system.
+
+        Every section should introduce one idea:
+
+        Problem
+        →
+        Solution
+        →
+        Right-Sized Vehicles
+        →
+        Booking
+        →
+        Leaflet Map
+        →
+        Route Test
+        →
+        Pricing
+        →
+        Cargo Sharing
+        →
+        Cost Sharing
+        →
+        Pass-It-On
+        →
+        Marketplace
+        →
+        Reuse
+        →
+        Smart Matching
+        →
+        Tracking
+        →
+        Safety
+        →
+        Complete Journey
+        →
+        SDG 12 Impact
+        →
+        App Preview
+        →
+        Final Call to Action
+
+    </final_experience>
+
+</project>

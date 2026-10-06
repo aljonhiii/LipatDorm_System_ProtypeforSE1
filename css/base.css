@@ -1,0 +1,529 @@
+/* ==========================================================
+   LipatDorm — Base Styles, Reset & Scroll Architecture
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('./tokens.css');
+
+/* --------------------------------------------------
+   1. Box-sizing & Reset
+-------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--text-primary);
+  background: var(--surface);
+  overflow: hidden; /* scroll container handles overflow */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------
+   2. Scroll Container — Snap Architecture
+-------------------------------------------------- */
+#scroll-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------------------------------------
+   3. Snap Section Base
+-------------------------------------------------- */
+.snap-section {
+  width: 100%;
+  min-height: 100dvh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Contain layout/style for performance */
+  contain: layout style;
+}
+
+/* --------------------------------------------------
+   4. Section Content Wrapper
+-------------------------------------------------- */
+.section-inner {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Two-column layout helper */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-12);
+  align-items: center;
+}
+
+.two-col.reverse {
+  direction: rtl;
+}
+.two-col.reverse > * {
+  direction: ltr;
+}
+
+/* --------------------------------------------------
+   5. Typography Utilities
+-------------------------------------------------- */
+.text-hero {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.text-h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.text-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+.text-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.text-body {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------
+   6. Button System — REF-A: pill buttons
+-------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.8rem var(--sp-8);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-fast) var(--ease-out-quart),
+    background var(--dur-fast) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Primary — solid filled */
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: oklch(64% 0.21 52);
+}
+
+/* Ghost — outlined */
+.btn-ghost {
+  background: transparent;
+  color: var(--clr-deep-green);
+  border: 1px solid oklch(20% 0 0 / 0.35);
+}
+
+.btn-ghost:hover {
+  background: oklch(20% 0 0 / 0.05);
+  border-color: var(--clr-deep-green);
+}
+
+.btn-ghost-dark {
+  background: transparent;
+  color: var(--clr-deep-green);
+  border: 1px solid var(--clr-deep-green);
+}
+
+.btn-ghost-dark:hover {
+  background: var(--clr-deep-green);
+  color: white;
+}
+
+.btn-green {
+  background: var(--clr-fresh-green);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.btn-green:hover {
+  background: oklch(50% 0.19 148);
+}
+
+/* Button group */
+.btn-group {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------
+   7. Pill / Badge — Minimalist Typography Tags
+-------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.3rem var(--sp-4);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+.pill-green {
+  background: var(--clr-fresh-green);
+  color: white;
+}
+
+.pill-orange {
+  background: var(--accent);
+  color: white;
+}
+
+.pill-outline {
+  border: 1px solid oklch(100% 0 0 / 0.3);
+  color: oklch(100% 0 0 / 0.85);
+}
+
+.pill-outline-dark {
+  border: 1px solid oklch(40% 0.06 148 / 0.3);
+  color: var(--clr-rich-green);
+}
+
+.pill-sdg {
+  background: oklch(20% 0 0 / 0.08);
+  border: 1px solid oklch(20% 0 0 / 0.2);
+  color: var(--clr-deep-green);
+}
+
+/* --------------------------------------------------
+   8. Card System — Minimalist & Crisp
+-------------------------------------------------- */
+.card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.card-dark {
+  background: var(--clr-rich-green);
+  color: var(--text-inverse);
+  border: 1px solid oklch(100% 0 0 / 0.1);
+}
+
+.card-glass {
+  background: oklch(100% 0 0 / 0.06);
+  border: 1px solid oklch(100% 0 0 / 0.14);
+  color: white;
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+}
+
+/* --------------------------------------------------
+   9. Stat Strip — REF-B-03, REF-B-04
+-------------------------------------------------- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid oklch(90% 0.02 148);
+  padding: var(--sp-6) var(--sp-8);
+  background: white;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.stat-item {
+  padding: 0 var(--sp-4);
+  border-right: 1px solid oklch(90% 0.02 148);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-widest);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-1);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-stat);
+  font-weight: var(--fw-bold);
+  color: var(--clr-charcoal);
+  line-height: 1.1;
+}
+
+.stat-unit {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------
+   10. Section Number Label
+-------------------------------------------------- */
+.section-number {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.section-number.inv {
+  color: oklch(100% 0 0 / 0.45);
+}
+
+/* --------------------------------------------------
+   11. Scroll-Reveal Animation Classes
+-------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays */
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+.delay-5 { transition-delay: 400ms; }
+.delay-6 { transition-delay: 480ms; }
+
+/* --------------------------------------------------
+   12. Prefers Reduced Motion
+-------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn {
+    transition: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------
+   13. Utility Classes
+-------------------------------------------------- */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--sp-2); }
+.gap-4 { gap: var(--sp-4); }
+.gap-6 { gap: var(--sp-6); }
+.gap-8 { gap: var(--sp-8); }
+.mt-2 { margin-top: var(--sp-2); }
+.mt-4 { margin-top: var(--sp-4); }
+.mt-6 { margin-top: var(--sp-6); }
+.mt-8 { margin-top: var(--sp-8); }
+.mb-2 { margin-bottom: var(--sp-2); }
+.mb-4 { margin-bottom: var(--sp-4); }
+.mb-6 { margin-bottom: var(--sp-6); }
+.mb-8 { margin-bottom: var(--sp-8); }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* --------------------------------------------------
+   14. Divider
+-------------------------------------------------- */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  margin: var(--sp-4) 0;
+}
+
+.divider.green {
+  background: var(--clr-fresh-green);
+}
+
+/* --------------------------------------------------
+   15. Feature Icon
+-------------------------------------------------- */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--clr-light-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-out-quart);
+}
+
+.feature-icon.accent {
+  background: oklch(70% 0.19 52 / 0.12);
+}
+
+.feature-icon.dark {
+  background: oklch(100% 0 0 / 0.1);
+}

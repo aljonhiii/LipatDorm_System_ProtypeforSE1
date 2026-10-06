@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LipatDorm — A budget-friendly micro-moving and cargo-sharing platform for dormitory students and renters in the Philippines. Supporting SDG 12." />
+  <title>LipatDorm — Move Smart. Spend Less. Waste Less.</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Google Fonts: Outfit and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Our Stylesheets -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     FIXED OVERLAYS
+     ============================================================ -->
+
+<!-- Scroll Progress -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- Top Navigation Bar — REF-A-04: 3-zone minimal -->
+<header id="top-bar" role="banner">
+  <nav class="topbar-links" aria-label="Main navigation">
+    <a href="#" data-scroll-to="s01-hero">Home</a>
+    <a href="#" data-scroll-to="s03-solution">Solution</a>
+    <a href="#" data-scroll-to="s06-map">Map</a>
+    <a href="#" data-scroll-to="s11-pass-it-on">Pass-It-On</a>
+    <a href="#" data-scroll-to="s19-sdg-impact">SDG 12</a>
+  </nav>
+
+  <div class="topbar-brand" aria-label="LipatDorm">
+    Lipat<span class="brand-dot">Dorm</span>
+  </div>
+
+  <div class="topbar-actions">
+    <button class="btn btn-ghost" data-scroll-to="s12-marketplace">Marketplace</button>
+    <button class="btn btn-primary" data-scroll-to="s05-booking">Book a Move</button>
+  </div>
+</header>
+
+<!-- Right-Edge Navigation Dots — REF-A-02 -->
+<nav id="dot-nav" aria-label="Section navigation" role="navigation">
+  <!-- Dots are injected by app.js -->
+</nav>
+
+<!-- Section Counter -->
+<div id="section-counter" aria-live="polite" aria-label="Current section">
+  <span id="counter-current">01</span>
+  <span class="counter-separator"> / </span>
+  <span id="counter-total">21</span>
+</div>
+
+
+<!-- ============================================================
+     SCROLL CONTAINER — Snap Scroll Architecture
+     ============================================================ -->
+<main id="scroll-container" role="main">
+
+  <!-- =========================================================
+       §01 — HERO / OPENING
+       ========================================================= -->
+  <section id="s01-hero" class="snap-section" aria-label="Hero — LipatDorm">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+      <!-- Left: Content anchored bottom-left (REF-A-01) -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="pill pill-sdg reveal delay-1">
+            SDG 12 · RESPONSIBLE CONSUMPTION
+          </span>
+        </div>
+
+        <h1 class="hero-headline reveal delay-2">
+          MOVE <span class="line-accent">SMART.</span><br/>
+          SPEND LESS.<br/>
+          WASTE LESS.
+        </h1>
+
+        <p class="hero-sub reveal delay-3">
+          LipatDorm is a budget-friendly micro-moving and cargo-sharing
+          platform designed for dormitory students and renters.
+        </p>
+
+        <div class="btn-group reveal delay-4">
+          <button class="btn btn-primary" data-scroll-to="s05-booking" id="hero-book-btn">
+            Book a Move →
+          </button>
+          <button class="btn btn-ghost" data-scroll-to="s03-solution" id="hero-explore-btn">
+            Explore Features
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Illustration + booking card -->
+      <div class="hero-visual" aria-hidden="true">
+        <img src="assets/images/hero.png"
+             alt="LipatDorm — dormitory moving illustration with multicab and cargo"
+             class="hero-illustration" />
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §02 — THE PROBLEM
+       ========================================================= -->
+  <section id="s02-problem" class="snap-section" aria-label="The Problem">
+    <div class="section-inner">
+      <div class="problem-header">
+        <div class="section-number reveal">02 — The Problem</div>
+        <h2 class="text-h1 problem-headline reveal delay-1">
+          MOVING SHOULD NOT BE THIS EXPENSIVE.
+        </h2>
+        <div class="divider reveal delay-2"></div>
+      </div>
+
+      <div class="problem-cards">
+        <article class="problem-card reveal delay-2">
+          <span class="problem-card-num">01</span>
+          <h3 class="problem-card-title">Expensive</h3>
+          <p class="problem-card-desc">
+            Large moving trucks are too expensive for short-distance
+            dormitory moves. Students often overpay for capacity they don't need.
+          </p>
+        </article>
+
+        <article class="problem-card reveal delay-3">
+          <span class="problem-card-num">02</span>
+          <h3 class="problem-card-title">Inefficient</h3>
+          <p class="problem-card-desc">
+            Students often need multiple trips using small vehicles,
+            wasting time, money, and fuel on repeat journeys.
+          </p>
+        </article>
+
+        <article class="problem-card reveal delay-4">
+          <span class="problem-card-num">03</span>
+          <h3 class="problem-card-title">Wasteful</h3>
+          <p class="problem-card-desc">
+            Students abandon or throw away usable furniture and appliances
+            because transporting them feels too difficult or expensive.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §03 — THE LIPATDORM SOLUTION
+       ========================================================= -->
+  <section id="s03-solution" class="snap-section" aria-label="The LipatDorm Solution">
+    <div class="section-inner">
+      <div class="solution-header">
+        <div class="section-number inv reveal">03 — The Solution</div>
+        <h2 class="text-h1 solution-headline reveal delay-1">
+          ONE PLATFORM.<br/>A SMARTER WAY TO MOVE.
+        </h2>
+        <p class="solution-sub reveal delay-2">
+          LipatDorm combines right-sized vehicles, cargo-sharing, and a community reuse
+          marketplace — all in one platform.
+        </p>
+      </div>
+
+      <div class="solution-features">
+        <div class="solution-feature reveal delay-2">
+          <div class="sf-number">01</div>
+          <div class="sf-title">Right-Sized Rides</div>
+          <div class="sf-desc">
+            Match your cargo with appropriately sized local vehicles —
+            multicabs, pickups, or vans. Pay only for what you need.
+          </div>
+        </div>
+
+        <div class="solution-feature reveal delay-3">
+          <div class="sf-number">02</div>
+          <div class="sf-title">Cargo-Sharing</div>
+          <div class="sf-desc">
+            Students moving in similar directions share one vehicle and
+            split the cost. Save more, move smarter.
+          </div>
+        </div>
+
+        <div class="solution-feature reveal delay-4">
+          <div class="sf-number">03</div>
+          <div class="sf-title">Pass-It-On</div>
+          <div class="sf-desc">
+            Give usable furniture and appliances a new owner instead of
+            throwing them away. Reduce waste, support community.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §04 — RIGHT-SIZED RIDES
+       ========================================================= -->
+  <section id="s04-rides" class="snap-section" aria-label="Right-Sized Rides">
+    <div class="section-inner">
+      <div class="rides-header">
+        <div class="section-number reveal">04 — Vehicle Fleet</div>
+        <h2 class="text-h1 reveal delay-1" style="color: var(--clr-deep-green)">
+          THE RIGHT VEHICLE FOR THE RIGHT CARGO.
+        </h2>
+        <p class="text-body text-muted reveal delay-2" style="max-width: 50ch; margin-top: 1rem;">
+          LipatDorm connects students with local owners of suitable small vehicles
+          across Zamboanga City.
+        </p>
+      </div>
+
+      <div class="rides-vehicles">
+        <!-- Featured — Multicab -->
+        <article class="vehicle-card featured reveal delay-2">
+          <div class="vehicle-card-image">
+            <img src="assets/images/vehicles.png" alt="Three vehicle types: multicab, pickup, utility van" />
+          </div>
+          <div class="vehicle-card-body">
+            <span class="vehicle-popular-badge">Most Popular</span>
+            <div class="vehicle-type">Multicab</div>
+            <p class="vehicle-desc">
+              Compact and nimble. Ideal for 1–8 items: electric fans, drawers,
+              small appliances, bags. Perfect for dorm-to-dorm moves.
+            </p>
+            <div class="vehicle-specs">
+              <span class="vehicle-spec">Capacity: Up to 8 items</span>
+              <span class="vehicle-spec">Coverage: City-wide</span>
+              <span class="vehicle-spec">Drivers: Verified</span>
+            </div>
+            <div class="vehicle-price">Starting at ₱80</div>
+          </div>
+        </article>
+
+        <!-- Small Pickup -->
+        <article class="vehicle-card reveal delay-3">
+          <div class="vehicle-card-image">
+            <img src="assets/images/vehicles.png" alt="Small Pickup truck for LipatDorm" />
+          </div>
+          <div class="vehicle-card-body">
+            <span class="vehicle-tag">Pickup</span>
+            <div class="vehicle-type">Small Pickup</div>
+            <p class="vehicle-desc">
+              Larger flatbed for mattresses, study tables, and bulkier cargo.
+              Handles mixed loads with ease.
+            </p>
+            <div class="vehicle-specs">
+              <span class="vehicle-spec">Capacity: Up to 15 items</span>
+              <span class="vehicle-spec">Cargo: Furniture-ready</span>
+            </div>
+            <div class="vehicle-price">Starting at ₱130</div>
+          </div>
+        </article>
+
+        <!-- Utility Van -->
+        <article class="vehicle-card reveal delay-4">
+          <div class="vehicle-card-image">
+            <img src="assets/images/vehicles.png" alt="Utility Van for LipatDorm" />
+          </div>
+          <div class="vehicle-card-body">
+            <span class="vehicle-tag">Van</span>
+            <div class="vehicle-type">Utility Van</div>
+            <p class="vehicle-desc">
+              Full-room moves. Handles complete dorm room contents in one trip.
+              Best value for larger moves.
+            </p>
+            <div class="vehicle-specs">
+              <span class="vehicle-spec">Capacity: Full room</span>
+              <span class="vehicle-spec">Service: End-to-end</span>
+            </div>
+            <div class="vehicle-price">Starting at ₱250</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §05 — SMART BOOKING
+       ========================================================= -->
+  <section id="s05-booking" class="snap-section" aria-label="Smart Booking">
+    <div class="section-inner">
+      <div class="section-number inv reveal">05 — Book a Move</div>
+
+      <div class="booking-layout">
+        <!-- Left text -->
+        <div class="booking-text">
+          <h2 class="text-h1 booking-headline reveal">
+            BOOK YOUR MOVE IN A FEW SIMPLE STEPS.
+          </h2>
+          <p class="booking-sub reveal delay-1">
+            Enter your pickup, destination, date, and cargo details.
+            We'll calculate your route, match you with the right vehicle, and show you the estimated fare.
+          </p>
+
+          <div class="booking-steps reveal delay-2">
+            <div class="booking-step">
+              <div class="booking-step-num">1</div>
+              Enter your pickup and destination
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">2</div>
+              Choose your date, time, and cargo type
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">3</div>
+              Select a vehicle that fits your load
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">4</div>
+              Review your estimated fare — no surprises
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">5</div>
+              Confirm and get matched with a driver
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Booking form mockup -->
+        <div class="reveal-right delay-2">
+          <div class="booking-form-card">
+            <h3>New Move Booking</h3>
+
+            <div class="form-group">
+              <label for="pickup-input">Pickup Location</label>
+              <div class="form-input" style="cursor:text; color: var(--clr-charcoal);">
+                WMSU Campus, Zamboanga City
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="dest-input">Destination</label>
+              <div class="form-input" style="cursor:text; color: var(--clr-charcoal);">
+                KCC Mall Area, Zamboanga City
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date</label>
+                <div class="form-input">Nov 15, 2025</div>
+              </div>
+              <div class="form-group">
+                <label>Time</label>
+                <div class="form-input">8:00 AM</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Cargo Size</label>
+              <div class="cargo-chips">
+                <button class="cargo-chip active" data-cargo="small">Small (1–5)</button>
+                <button class="cargo-chip" data-cargo="medium">Medium (6–12)</button>
+                <button class="cargo-chip" data-cargo="large">Large (13–20)</button>
+                <button class="cargo-chip" data-cargo="full">Full Load</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Vehicle Type</label>
+              <div class="form-input">Multicab (Recommended)</div>
+            </div>
+
+            <div class="booking-form-total">
+              <div>
+                <div class="bft-label">Estimated Fare</div>
+                <div class="bft-price">₱96 – ₱120</div>
+                <div class="bft-note">Final fare confirmed at booking.</div>
+              </div>
+              <button class="btn btn-green" data-scroll-to="s06-map">
+                View on Map →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §06 — MAP & ROUTE COORDINATION
+       ========================================================= -->
+  <section id="s06-map" class="snap-section" aria-label="Map and Route Coordination">
+    <div class="map-section-layout">
+
+      <!-- Leaflet Map — REF-B tile style -->
+      <div id="map-s06" aria-label="Interactive route map — Zamboanga City"></div>
+
+      <!-- Info Panel -->
+      <aside class="map-info-panel">
+        <div class="section-number">06 — Map & Routes</div>
+        <h2 class="text-h2 map-info-headline reveal">
+          PLAN THE ROUTE. COORDINATE THE MOVE.
+        </h2>
+        <p class="map-info-sub reveal delay-1">
+          LipatDorm uses Leaflet.js and OpenStreetMap to display pickup locations,
+          destinations, driver positions, shared cargo, and planned routes
+          on an interactive live map.
+        </p>
+
+        <ul class="map-features-list reveal delay-2" aria-label="Map features">
+          <li class="map-feature-item">Pickup Marker</li>
+          <li class="map-feature-item">Destination Marker</li>
+          <li class="map-feature-item">Driver Marker (Live Position)</li>
+          <li class="map-feature-item">Route Polyline</li>
+          <li class="map-feature-item">Distance & Travel Time</li>
+          <li class="map-feature-item">Vehicle Information</li>
+          <li class="map-feature-item">Trip Status</li>
+        </ul>
+
+        <div class="map-tech-badges reveal delay-3">
+          <span class="pill pill-outline-dark">Leaflet.js</span>
+          <span class="pill pill-outline-dark">OpenStreetMap</span>
+          <span class="pill pill-outline-dark">OSRM Routing</span>
+        </div>
+
+        <button class="btn btn-green reveal delay-4" data-scroll-to="s07-route-test">
+          Run Route Test →
+        </button>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §07 — SAMPLE ROUTE TEST
+       ========================================================= -->
+  <section id="s07-route-test" class="snap-section" aria-label="Sample Route Test">
+    <div class="route-test-layout">
+
+      <!-- Map -->
+      <div id="map-s07" aria-label="Route test map — WMSU to KCC Mall"></div>
+
+      <!-- Route Test Panel -->
+      <aside class="route-test-panel">
+
+        <div class="rtp-header">
+          <div class="rtp-section-num">07 — Route Test</div>
+          <h2 class="rtp-headline">TEST A LIPATDORM ROUTE.</h2>
+          <p class="rtp-sub">
+            Watch LipatDorm calculate and animate a real moving route from
+            WMSU Campus to KCC Mall de Zamboanga.
+          </p>
+
+          <div style="margin-top: 1rem;">
+            <div id="trip-status-badge" class="trip-status-badge" role="status" aria-live="polite">
+              <span class="status-dot"></span>
+              READY
+            </div>
+          </div>
+        </div>
+
+        <!-- Route Info Card — REF-B layout -->
+        <div class="route-info-card">
+          <div class="ric-route">
+            <div class="ric-row">
+              <div class="ric-dot pickup"></div>
+              <div>
+                <div class="ric-text-label">Pickup</div>
+                <div class="ric-text-val">WMSU Campus Area</div>
+              </div>
+            </div>
+            <div class="ric-line"></div>
+            <div class="ric-row">
+              <div class="ric-dot dest"></div>
+              <div>
+                <div class="ric-text-label">Destination</div>
+                <div class="ric-text-val">KCC Mall de Zamboanga</div>
+              </div>
+            </div>
+            <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted); display: flex; gap: 1rem;">
+              <span>Multicab</span>
+              <span>5 Items</span>
+              <span>Trip Status: <strong id="ric-status" style="color: var(--clr-fresh-green);">Ready</strong></span>
+            </div>
+          </div>
+
+          <!-- Stat strip — REF-B-03 -->
+          <div class="ric-stats">
+            <div class="ric-stat">
+              <div class="ric-stat-label">Distance</div>
+              <div class="ric-stat-val" id="ric-distance">—</div>
+            </div>
+            <div class="ric-stat">
+              <div class="ric-stat-label">ETA</div>
+              <div class="ric-stat-val" id="ric-eta">—</div>
+            </div>
+            <div class="ric-stat">
+              <div class="ric-stat-label">Est. Fare</div>
+              <div class="ric-stat-val" id="ric-fare">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fallback banner -->
+        <div id="fallback-banner" class="fallback-banner" role="alert">
+          NOTICE: Route service unavailable — showing straight-line estimate. All UI features remain active.
+        </div>
+
+        <!-- Test sequence steps -->
+        <div class="test-sequence">
+          <div class="test-seq-title">Test Sequence</div>
+          <div class="test-seq-steps">
+            <div class="test-seq-step" data-step="0">
+              <span class="step-icon"></span> Display pickup marker
+            </div>
+            <div class="test-seq-step" data-step="1">
+              <span class="step-icon"></span> Display destination marker
+            </div>
+            <div class="test-seq-step" data-step="2">
+              <span class="step-icon"></span> Calculate road route (OSRM)
+            </div>
+            <div class="test-seq-step" data-step="3">
+              <span class="step-icon"></span> Draw route on map
+            </div>
+            <div class="test-seq-step" data-step="4">
+              <span class="step-icon"></span> Display distance &amp; ETA
+            </div>
+            <div class="test-seq-step" data-step="5">
+              <span class="step-icon"></span> Display est. fare
+            </div>
+            <div class="test-seq-step" data-step="6">
+              <span class="step-icon"></span> Assign driver marker
+            </div>
+            <div class="test-seq-step" data-step="7">
+              <span class="step-icon"></span> Animate driver along route
+            </div>
+            <div class="test-seq-step" data-step="8">
+              <span class="step-icon"></span> Complete trip
+            </div>
+          </div>
+        </div>
+
+        <!-- Run button -->
+        <div class="rtp-action">
+          <button class="btn btn-green w-full" id="btn-test-route" style="justify-content: center; padding: 1rem;">
+            Test Sample Route →
+          </button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §08 — TRANSPARENT PRICING
+       ========================================================= -->
+  <section id="s08-pricing" class="snap-section" aria-label="Transparent Pricing">
+    <div class="section-inner">
+      <div class="section-number reveal">08 — Pricing</div>
+      <div class="pricing-layout">
+        <!-- Pricing breakdown card -->
+        <div class="pricing-card reveal delay-1">
+          <div class="pricing-card-header">
+            <h2>Your Fare Breakdown</h2>
+            <div class="pricing-subtitle">WMSU Campus → KCC Mall · Multicab · 5 items</div>
+          </div>
+
+          <div class="pricing-items">
+            <div class="pricing-item">
+              <div class="pi-label">Base Fare</div>
+              <div class="pi-value">₱50.00</div>
+            </div>
+            <div class="pricing-item">
+              <div class="pi-label">Distance (3.2 km × ₱8)</div>
+              <div class="pi-value">₱25.60</div>
+            </div>
+            <div class="pricing-item">
+              <div class="pi-label">Vehicle — Multicab</div>
+              <div class="pi-value">₱0.00</div>
+            </div>
+            <div class="pricing-item">
+              <div class="pi-label">Cargo — Small (5 items)</div>
+              <div class="pi-value">₱20.00</div>
+            </div>
+            <div class="pricing-item">
+              <div class="pi-label">Optional Helpers</div>
+              <div class="pi-value">₱0.00</div>
+            </div>
+          </div>
+
+          <div class="pricing-total">
+            <div class="pt-label">Total Estimated</div>
+            <div class="pt-amount">₱95.60</div>
+          </div>
+        </div>
+
+        <!-- Visual promise -->
+        <div class="pricing-visual">
+          <div class="section-number reveal">NO SURPRISE PRICES.</div>
+          <h2 class="text-h1 pricing-headline reveal delay-1">
+            WHAT YOU SEE IS WHAT YOU PAY.
+          </h2>
+          <p class="pricing-promise reveal delay-2">
+            "No guessing. No surprise bargaining."
+          </p>
+
+          <div class="pricing-trust-items reveal delay-3">
+            <div class="pricing-trust-item">
+              <span class="pti-marker">—</span>
+              Fare calculated before you confirm
+            </div>
+            <div class="pricing-trust-item">
+              <span class="pti-marker">—</span>
+              Locked price — no last-minute changes
+            </div>
+            <div class="pricing-trust-item">
+              <span class="pti-marker">—</span>
+              Transparent cargo-sharing cost split
+            </div>
+            <div class="pricing-trust-item">
+              <span class="pti-marker">—</span>
+              Digital receipt after every trip
+            </div>
+          </div>
+
+          <div class="reveal delay-4">
+            <button class="btn btn-ghost-dark" data-scroll-to="s09-cargo-sharing">
+              See Cargo-Sharing Savings →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §09 — CARGO-SHARING
+       ========================================================= -->
+  <section id="s09-cargo-sharing" class="snap-section" aria-label="Cargo-Sharing">
+    <div class="section-inner">
+      <div class="section-number inv reveal">09 — Cargo-Sharing</div>
+
+      <div class="cargo-sharing-layout">
+        <!-- Text -->
+        <div class="cargo-sharing-text">
+          <h2 class="text-h1 cs-headline reveal">
+            SHARE THE RIDE.<br/>SHARE THE COST.
+          </h2>
+          <p class="cs-sub reveal delay-1">
+            Students with similar pickup locations, destinations, dates, and schedules
+            can share one vehicle — significantly reducing individual costs.
+          </p>
+
+          <div class="cs-matching-factors reveal delay-2">
+            <div class="cs-factors-title">Matching Factors</div>
+            <div class="cs-factor-tags">
+              <span class="cs-tag">Pickup Location</span>
+              <span class="cs-tag">Destination</span>
+              <span class="cs-tag">Date</span>
+              <span class="cs-tag">Time</span>
+              <span class="cs-tag">Cargo Size</span>
+              <span class="cs-tag">Vehicle Capacity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="cargo-sharing-diagram reveal-right delay-2" aria-hidden="true">
+          <div class="cs-students-row">
+            <div class="cs-student">
+              <div class="cs-avatar">A</div>
+              <div class="cs-student-label">Student A</div>
+              <div class="cs-student-location">Dorm 1, Sta. Catalina</div>
+            </div>
+            <div class="cs-student">
+              <div class="cs-avatar">B</div>
+              <div class="cs-student-label">Student B</div>
+              <div class="cs-student-location">Dorm 2, Canelar</div>
+            </div>
+          </div>
+
+          <div class="cs-arrows">
+            <span>&rarr;</span>
+            <span>&rarr;</span>
+          </div>
+
+          <div class="cs-vehicle-card">
+            <div class="cs-vehicle-info">
+              <div class="cs-vi-type">Shared Multicab</div>
+              <div class="cs-vi-note">KCC Mall Area · Driver Juan D.</div>
+            </div>
+          </div>
+
+          <div class="cs-savings-badge">
+            <div class="cs-savings-label">Each student saves</div>
+            <div class="cs-savings-amount">40–60% SAVINGS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §10 — SPLIT THE COST
+       ========================================================= -->
+  <section id="s10-split-cost" class="snap-section" aria-label="Split the Cost">
+    <div class="section-inner">
+      <div class="split-header">
+        <div class="section-number reveal">10 — Split the Cost</div>
+        <h2 class="text-h1 reveal delay-1" style="color:var(--clr-deep-green)">
+          ONE TRIP. MULTIPLE STUDENTS. LOWER COST.
+        </h2>
+      </div>
+
+      <div class="split-comparison">
+        <!-- Before -->
+        <div class="split-panel before reveal delay-2">
+          <div class="split-panel-header">BEFORE — SEPARATE TRIPS</div>
+          <div class="split-panel-body">
+            <div class="split-trip-item">
+              <span class="sti-label">Student 01 — Own vehicle</span>
+              <span class="sti-cost">₱280</span>
+            </div>
+            <div class="split-trip-item">
+              <span class="sti-label">Student 02 — Own vehicle</span>
+              <span class="sti-cost">₱280</span>
+            </div>
+            <div class="split-trip-item">
+              <span class="sti-label">Student 03 — Own vehicle</span>
+              <span class="sti-cost">₱280</span>
+            </div>
+          </div>
+          <div class="split-panel-total">
+            <span class="spt-label">Total Cost</span>
+            <span class="spt-amount">₱840</span>
+          </div>
+        </div>
+
+        <!-- VS -->
+        <div class="split-vs">
+          <div class="split-vs-icon">VS</div>
+        </div>
+
+        <!-- After -->
+        <div class="split-panel after reveal delay-3">
+          <div class="split-panel-header">AFTER — SHARED TRIP</div>
+          <div class="split-panel-body">
+            <div class="split-trip-item">
+              <span class="sti-label">Student 01 — Shared</span>
+              <span class="sti-cost">₱140</span>
+            </div>
+            <div class="split-trip-item">
+              <span class="sti-label">Student 02 — Shared</span>
+              <span class="sti-cost">₱140</span>
+            </div>
+            <div class="split-trip-item">
+              <span class="sti-label">Student 03 — Shared</span>
+              <span class="sti-cost">₱140</span>
+            </div>
+          </div>
+          <div class="split-panel-total">
+            <span class="spt-label">Total Cost</span>
+            <span class="spt-amount">₱420</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §11 — PASS-IT-ON
+       ========================================================= -->
+  <section id="s11-pass-it-on" class="snap-section" aria-label="Pass-It-On">
+    <div class="section-inner">
+      <div class="pit-header">
+        <div class="section-number inv reveal">11 — Pass-It-On</div>
+        <h2 class="text-h1 pit-headline reveal delay-1">
+          DON'T THROW IT AWAY.<br/>PASS IT ON.
+        </h2>
+        <p class="pit-sub reveal delay-2">
+          Students can list usable furniture, appliances, and other dormitory items
+          for sale, donation, or free claiming — reducing waste and helping others.
+        </p>
+      </div>
+
+      <div class="pit-items-grid">
+        <div class="pit-item-card reveal delay-2">
+          <div class="pit-item-image">
+            <img src="assets/images/passiton-items.png" alt="Study Table" style="transform: scale(2.2); transform-origin: 5% 5%;" />
+          </div>
+          <div class="pit-item-body">
+            <div class="pit-item-name">Study Table</div>
+            <div class="pit-item-badges">
+              <span class="pit-badge good">Good</span>
+              <span class="pit-badge forsale">For Sale</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pit-item-card reveal delay-3">
+          <div class="pit-item-image">
+            <img src="assets/images/passiton-items.png" alt="Electric Fan" style="transform: scale(2.4); transform-origin: 50% 30%;" />
+          </div>
+          <div class="pit-item-body">
+            <div class="pit-item-name">Electric Fan</div>
+            <div class="pit-item-badges">
+              <span class="pit-badge good">Good</span>
+              <span class="pit-badge free">Free</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pit-item-card reveal delay-4">
+          <div class="pit-item-image">
+            <img src="assets/images/passiton-items.png" alt="Plastic Drawers" style="transform: scale(2.2); transform-origin: 95% 5%;" />
+          </div>
+          <div class="pit-item-body">
+            <div class="pit-item-name">Plastic Drawers</div>
+            <div class="pit-item-badges">
+              <span class="pit-badge fair">Fair</span>
+              <span class="pit-badge forsale">For Sale</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pit-item-card reveal delay-5">
+          <div class="pit-item-image">
+            <img src="assets/images/passiton-items.png" alt="Study Chair" style="transform: scale(2.2); transform-origin: 5% 95%;" />
+          </div>
+          <div class="pit-item-body">
+            <div class="pit-item-name">Study Chair</div>
+            <div class="pit-item-badges">
+              <span class="pit-badge good">Good</span>
+              <span class="pit-badge free">Free</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pit-item-card reveal delay-6">
+          <div class="pit-item-image">
+            <img src="assets/images/passiton-items.png" alt="Rice Cooker" style="transform: scale(2.2); transform-origin: 95% 95%;" />
+          </div>
+          <div class="pit-item-body">
+            <div class="pit-item-name">Rice Cooker</div>
+            <div class="pit-item-badges">
+              <span class="pit-badge good">Good</span>
+              <span class="pit-badge forsale">₱150</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §12 — COMMUNITY MARKETPLACE
+       ========================================================= -->
+  <section id="s12-marketplace" class="snap-section" aria-label="Community Marketplace">
+    <div class="section-inner">
+      <div>
+        <div class="section-number reveal">12 — Marketplace</div>
+        <h2 class="text-h2 marketplace-headline reveal delay-1">
+          FIND WHAT YOU NEED NEAR YOUR NEXT DORM.
+        </h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="marketplace-search-bar reveal delay-2">
+          <input type="text" id="marketplace-search" class="marketplace-search-input"
+                 placeholder="Search items by name or category..." aria-label="Search marketplace items" />
+          <button class="btn btn-green" style="padding: 0.7rem 1.25rem; white-space: nowrap;">
+            Search
+          </button>
+        </div>
+
+        <div class="marketplace-filters reveal delay-3" role="group" aria-label="Category filters">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="furniture">Furniture</button>
+          <button class="filter-chip" data-filter="appliances">Appliances</button>
+          <button class="filter-chip" data-filter="study">Study Materials</button>
+          <button class="filter-chip" data-filter="storage">Storage</button>
+          <button class="filter-chip free-toggle" data-filter="free">Free Only</button>
+        </div>
+      </div>
+
+      <div class="marketplace-grid" id="marketplace-grid" role="list" aria-label="Marketplace listings">
+
+        <article class="marketplace-item" data-category="furniture" data-free="false" data-name="study table" role="listitem">
+          <div class="mi-category-stripe">FUR</div>
+          <div class="mi-body">
+            <div class="mi-category">Furniture</div>
+            <div class="mi-name">Study Table</div>
+            <div class="mi-condition">Good condition · Lightly used</div>
+            <div class="mi-footer">
+              <span class="mi-price">₱350</span>
+              <button class="mi-reserve-btn">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="appliances" data-free="true" data-name="electric fan" role="listitem">
+          <div class="mi-category-stripe free">APP · FREE</div>
+          <div class="mi-body">
+            <div class="mi-category">Appliances</div>
+            <div class="mi-name">Electric Fan</div>
+            <div class="mi-condition">Good condition · Works perfectly</div>
+            <div class="mi-footer">
+              <span class="mi-price free">FREE</span>
+              <button class="mi-reserve-btn">Claim</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="storage" data-free="false" data-name="plastic drawers" role="listitem">
+          <div class="mi-category-stripe">STR</div>
+          <div class="mi-body">
+            <div class="mi-category">Storage</div>
+            <div class="mi-name">Plastic Drawers (3-tier)</div>
+            <div class="mi-condition">Fair condition · Small scratches</div>
+            <div class="mi-footer">
+              <span class="mi-price">₱150</span>
+              <button class="mi-reserve-btn">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="furniture" data-free="true" data-name="study chair" role="listitem">
+          <div class="mi-category-stripe free">FUR · FREE</div>
+          <div class="mi-body">
+            <div class="mi-category">Furniture</div>
+            <div class="mi-name">Study Chair</div>
+            <div class="mi-condition">Good condition · Clean</div>
+            <div class="mi-footer">
+              <span class="mi-price free">FREE</span>
+              <button class="mi-reserve-btn">Claim</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="appliances" data-free="false" data-name="rice cooker" role="listitem">
+          <div class="mi-category-stripe">APP</div>
+          <div class="mi-body">
+            <div class="mi-category">Appliances</div>
+            <div class="mi-name">Rice Cooker 1.8L</div>
+            <div class="mi-condition">Good condition · Barely used</div>
+            <div class="mi-footer">
+              <span class="mi-price">₱150</span>
+              <button class="mi-reserve-btn">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="furniture" data-free="false" data-name="bookshelf" role="listitem">
+          <div class="mi-category-stripe">FUR</div>
+          <div class="mi-body">
+            <div class="mi-category">Furniture</div>
+            <div class="mi-name">Bookshelf (3-shelf)</div>
+            <div class="mi-condition">Good condition · Light assembly</div>
+            <div class="mi-footer">
+              <span class="mi-price">₱400</span>
+              <button class="mi-reserve-btn">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="appliances" data-free="false" data-name="study lamp" role="listitem">
+          <div class="mi-category-stripe">APP</div>
+          <div class="mi-body">
+            <div class="mi-category">Appliances</div>
+            <div class="mi-name">LED Study Lamp</div>
+            <div class="mi-condition">Fair condition · Works fine</div>
+            <div class="mi-footer">
+              <span class="mi-price">₱80</span>
+              <button class="mi-reserve-btn">Reserve</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="marketplace-item" data-category="study" data-free="true" data-name="notebook bundle" role="listitem">
+          <div class="mi-category-stripe free">STU · FREE</div>
+          <div class="mi-body">
+            <div class="mi-category">Study Materials</div>
+            <div class="mi-name">Notebook Bundle (8 pcs)</div>
+            <div class="mi-condition">Barely used · 50+ pages each</div>
+            <div class="mi-footer">
+              <span class="mi-price free">FREE</span>
+              <button class="mi-reserve-btn">Claim</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §13 — SWAP & DONATE
+       ========================================================= -->
+  <section id="s13-swap-donate" class="snap-section" aria-label="Swap and Donate">
+    <div class="section-inner">
+      <div class="swap-header">
+        <div class="section-number inv reveal">13 — Swap &amp; Donate</div>
+        <h2 class="text-h1 swap-headline reveal delay-1">
+          GIVE. SWAP. REUSE.
+        </h2>
+        <p class="swap-sub reveal delay-2">
+          Help usable products find another owner instead of becoming waste.
+        </p>
+      </div>
+
+      <div class="swap-tiles">
+        <div class="swap-tile sell reveal delay-2">
+          <div class="swap-tile-num">01</div>
+          <div class="swap-tile-title">Sell</div>
+          <div class="swap-tile-desc">
+            List your items at a fair price. Students moving in can find
+            exactly what they need at a fraction of retail cost.
+          </div>
+        </div>
+        <div class="swap-tile donate reveal delay-3">
+          <div class="swap-tile-num">02</div>
+          <div class="swap-tile-title">Donate</div>
+          <div class="swap-tile-desc">
+            Give your items away freely to students who need them.
+          </div>
+        </div>
+        <div class="swap-tile swap reveal delay-4">
+          <div class="swap-tile-num">03</div>
+          <div class="swap-tile-title">Swap</div>
+          <div class="swap-tile-desc">
+            Exchange items with other students — trade what you don't need
+            for what you do.
+          </div>
+        </div>
+        <div class="swap-tile freeclaim reveal delay-5">
+          <div class="swap-tile-num">04</div>
+          <div class="swap-tile-title">Free Claim</div>
+          <div class="swap-tile-desc">
+            Mark items as free for anyone who needs them. Zero cost, maximum impact.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §14 — DORM-TO-DORM REUSE
+       ========================================================= -->
+  <section id="s14-local-reuse" class="snap-section" aria-label="Dorm-to-Dorm Reuse">
+    <div class="section-inner" style="align-items: center; gap: 3rem;">
+      <div class="reuse-header" style="text-align: center;">
+        <div class="section-number reveal">14 — Dorm Reuse</div>
+        <h2 class="text-h1 reuse-headline reveal delay-1">
+          KEEP DORM ITEMS IN CIRCULATION.
+        </h2>
+        <p class="reuse-sub reveal delay-2" style="text-align: center; margin: 0 auto; max-width: 50ch;">
+          Incoming students can acquire usable items from outgoing students —
+          reducing unnecessary purchases and disposal.
+        </p>
+      </div>
+
+      <div class="reuse-flow reveal delay-3" aria-label="Reuse flow: Outgoing student to Pass-It-On to Incoming Student">
+        <div class="reuse-node">
+          <div class="reuse-node-circle">01</div>
+          <div class="reuse-node-label">Outgoing Student</div>
+        </div>
+        <div class="reuse-arrow" aria-hidden="true">&rarr;</div>
+        <div class="reuse-node">
+          <div class="reuse-node-circle">02</div>
+          <div class="reuse-node-label">Pass-It-On Listing</div>
+        </div>
+        <div class="reuse-arrow" aria-hidden="true">&rarr;</div>
+        <div class="reuse-node">
+          <div class="reuse-node-circle">03</div>
+          <div class="reuse-node-label">Incoming Student</div>
+        </div>
+        <div class="reuse-arrow" aria-hidden="true">&rarr;</div>
+        <div class="reuse-node">
+          <div class="reuse-node-circle">04</div>
+          <div class="reuse-node-label">Reused Dorm Item</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §15 — SMART MATCHING
+       ========================================================= -->
+  <section id="s15-smart-matching" class="snap-section" aria-label="Smart Matching">
+    <div class="section-inner">
+      <div class="section-number inv reveal">15 — Smart Matching</div>
+      <div class="matching-layout">
+        <div class="matching-text">
+          <h2 class="text-h1 m-headline reveal">
+            FIND THE BEST MATCH FOR YOUR MOVE.
+          </h2>
+          <p class="m-sub reveal delay-1">
+            Our matching system analyzes pickup areas, destinations, dates, times,
+            cargo sizes, and vehicle capacities to find the most compatible
+            cargo-sharing partners.
+          </p>
+
+          <div class="matching-criteria reveal delay-2">
+            <div class="mc-item"><span class="mc-num">01</span> Pickup Area</div>
+            <div class="mc-item"><span class="mc-num">02</span> Destination</div>
+            <div class="mc-item"><span class="mc-num">03</span> Date &amp; Time</div>
+            <div class="mc-item"><span class="mc-num">04</span> Cargo Size</div>
+            <div class="mc-item"><span class="mc-num">05</span> Vehicle Capacity</div>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="matching-visual reveal-right delay-2" aria-hidden="true">
+          <div class="mv-requests">
+            <div class="mv-request-card matched">
+              <div class="mv-request-avatar">A</div>
+              <div>
+                <div style="font-size: 0.82rem; color: var(--clr-deep-green);">Student A · Dorm 1 → KCC Area</div>
+                <div style="font-size: 0.65rem; color: oklch(20% 0 0 / 0.65);">Nov 15 · 8AM · 5 items</div>
+              </div>
+              <span class="pill pill-green" style="margin-left: auto; font-size: 0.55rem;">MATCHED</span>
+            </div>
+            <div class="mv-request-card matched">
+              <div class="mv-request-avatar">B</div>
+              <div>
+                <div style="font-size: 0.82rem; color: var(--clr-deep-green);">Student B · Dorm 2 → KCC Area</div>
+                <div style="font-size: 0.65rem; color: oklch(20% 0 0 / 0.65);">Nov 15 · 8AM · 4 items</div>
+              </div>
+              <span class="pill pill-green" style="margin-left: auto; font-size: 0.55rem;">MATCHED</span>
+            </div>
+            <div class="mv-request-card">
+              <div class="mv-request-avatar">C</div>
+              <div>
+                <div style="font-size: 0.82rem; color: oklch(20% 0 0 / 0.8);">Student C · Different route</div>
+                <div style="font-size: 0.65rem; color: oklch(20% 0 0 / 0.55);">Nov 15 · 2PM · 8 items</div>
+              </div>
+              <span class="pill pill-outline" style="margin-left: auto; font-size: 0.55rem;">PENDING</span>
+            </div>
+          </div>
+          <div class="mv-match-label">OPTIMAL MATCH FOUND</div>
+          <div class="mv-vehicle">
+            <div style="font-family: var(--font-mono); font-weight: 700;">[MULTICAB]</div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem;">Multicab · Juan D.</div>
+              <div style="font-size: 0.72rem; opacity: 0.7;">KCC Mall Area · Nov 15 · 8:00 AM</div>
+            </div>
+            <span class="pill pill-outline" style="margin-left: auto;">RATING: 4.9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §16 — LIVE TRIP TRACKING
+       ========================================================= -->
+  <section id="s16-tracking" class="snap-section" aria-label="Live Trip Tracking">
+    <div class="tracking-layout">
+
+      <!-- Map — static decorative -->
+      <div id="map-s16" aria-label="Live tracking map showing driver en route"></div>
+
+      <!-- Tracking Panel -->
+      <aside class="tracking-panel">
+        <div class="section-number">16 — Live Tracking</div>
+        <h2 class="tracking-headline reveal">KNOW WHERE YOUR MOVE IS.</h2>
+
+        <div class="tracking-status-bar reveal delay-1">
+          <div class="tsb-dot"></div>
+          <span class="tsb-text">Driver En Route — 8 min away</span>
+        </div>
+
+        <!-- Stat strip — REF-B-03 -->
+        <div class="stat-strip reveal delay-2">
+          <div class="stat-item">
+            <div class="stat-label">Distance Left</div>
+            <div class="stat-value">1.4<span class="stat-unit"> km</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">ETA</div>
+            <div class="stat-value">~8<span class="stat-unit"> min</span></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Status</div>
+            <div class="stat-value" style="font-size: 0.9rem; color: var(--clr-fresh-green);">En Route</div>
+          </div>
+        </div>
+
+        <ul class="tracking-features-list reveal delay-3" aria-label="Live tracking features">
+          <li class="tf-item"><span class="tf-num">01</span> Driver Location (live)</li>
+          <li class="tf-item"><span class="tf-num">02</span> Route Progress</li>
+          <li class="tf-item"><span class="tf-num">03</span> Real-time ETA</li>
+          <li class="tf-item"><span class="tf-num">04</span> Trip Status Updates</li>
+          <li class="tf-item"><span class="tf-num">05</span> Pickup Confirmation</li>
+          <li class="tf-item"><span class="tf-num">06</span> Destination Confirmation</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §17 — SAFETY & TRUST
+       ========================================================= -->
+  <section id="s17-safety" class="snap-section" aria-label="Safety and Trust">
+    <div class="section-inner">
+      <div class="safety-header">
+        <div class="section-number inv reveal">17 — Safety &amp; Trust</div>
+        <h2 class="text-h1 safety-headline reveal delay-1">
+          MOVE WITH MORE CONFIDENCE.
+        </h2>
+        <p class="safety-sub reveal delay-2">
+          Every driver and vehicle on LipatDorm goes through a verification
+          process so you can move with peace of mind.
+        </p>
+      </div>
+
+      <div class="safety-grid">
+        <div class="safety-card featured reveal delay-2">
+          <span class="sc-num">01</span>
+          <div class="sc-title">Driver Verification</div>
+          <div class="sc-desc">
+            Every driver submits valid government ID, driver's license,
+            and vehicle registration before being approved on the platform.
+          </div>
+        </div>
+        <div class="safety-card reveal delay-3">
+          <span class="sc-num">02</span>
+          <div class="sc-title">License Check</div>
+          <div class="sc-desc">Valid driver's license required for all drivers.</div>
+        </div>
+        <div class="safety-card reveal delay-4">
+          <span class="sc-num">03</span>
+          <div class="sc-title">Vehicle Registration</div>
+          <div class="sc-desc">Current OR/CR required for every registered vehicle.</div>
+        </div>
+        <div class="safety-card reveal delay-2">
+          <span class="sc-num">04</span>
+          <div class="sc-title">Driver Ratings</div>
+          <div class="sc-desc">See ratings and reviews from other students before booking.</div>
+        </div>
+        <div class="safety-card reveal delay-3">
+          <span class="sc-num">05</span>
+          <div class="sc-title">User Reviews</div>
+          <div class="sc-desc">Community-driven feedback on drivers and listings.</div>
+        </div>
+        <div class="safety-card reveal delay-4">
+          <span class="sc-num">06</span>
+          <div class="sc-title">Issue Reporting</div>
+          <div class="sc-desc">Report problems quickly. Admin team reviews all reports.</div>
+        </div>
+        <div class="safety-card reveal delay-5">
+          <span class="sc-num">07</span>
+          <div class="sc-title">Trip Records</div>
+          <div class="sc-desc">Every trip is logged. Full record available in your history.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §18 — COMPLETE MOVING JOURNEY
+       ========================================================= -->
+  <section id="s18-journey" class="snap-section" aria-label="Complete Moving Journey">
+    <div class="section-inner">
+      <div class="journey-header">
+        <div class="section-number reveal">18 — Moving Journey</div>
+        <h2 class="text-h1 journey-headline reveal delay-1">
+          FROM BOOKING TO ARRIVAL.
+        </h2>
+        <p class="text-body text-muted reveal delay-2" style="margin-top: 0.5rem; max-width: 50ch;">
+          The complete LipatDorm moving experience — 10 clear steps from start to finish.
+        </p>
+      </div>
+
+      <div class="journey-timeline reveal delay-3">
+        <div class="journey-steps" role="list" aria-label="Moving journey steps">
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">01</span></div>
+            <div class="js-label">Create Booking</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">02</span></div>
+            <div class="js-label">Add Cargo</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">03</span></div>
+            <div class="js-label">Choose Vehicle</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">04</span></div>
+            <div class="js-label">Calculate Route</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">05</span></div>
+            <div class="js-label">Match Driver</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">06</span></div>
+            <div class="js-label">Pickup</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">07</span></div>
+            <div class="js-label">Load Cargo</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">08</span></div>
+            <div class="js-label">Travel</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">09</span></div>
+            <div class="js-label">Arrive</div>
+          </div>
+          <div class="journey-step" role="listitem">
+            <div class="js-circle"><span class="js-number">10</span></div>
+            <div class="js-label">Complete Trip</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §19 — SDG 12 IMPACT DASHBOARD
+       ========================================================= -->
+  <section id="s19-sdg-impact" class="snap-section" aria-label="SDG 12 Impact Dashboard">
+    <div class="section-inner">
+      <div class="sdg-header">
+        <div>
+          <div class="section-number inv reveal">19 — SDG 12 Impact</div>
+          <h2 class="text-h1 sdg-headline reveal delay-1">
+            EVERY SHARED TRIP CAN MAKE A DIFFERENCE.
+          </h2>
+          <p class="sdg-sub reveal delay-2">
+            LipatDorm supports SDG 12 — Responsible Consumption and Production —
+            by encouraging resource sharing, reuse, and more efficient transportation.
+          </p>
+        </div>
+
+        <div class="sdg-badge-large reveal delay-3" aria-label="SDG Goal 12">
+          <div class="sdg-badge-num">12</div>
+          <div class="sdg-badge-text">Responsible Consumption</div>
+        </div>
+      </div>
+
+      <div class="sdg-metrics-grid" aria-label="SDG 12 impact metrics">
+        <div class="sdg-metric reveal delay-2">
+          <div class="sdg-metric-tag">[01]</div>
+          <div class="sdg-metric-label">Shared Trips</div>
+          <div class="sdg-metric-value" id="sdg-shared-trips">0</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+        <div class="sdg-metric reveal delay-3">
+          <div class="sdg-metric-tag">[02]</div>
+          <div class="sdg-metric-label">Items Reused</div>
+          <div class="sdg-metric-value" id="sdg-items-reused">0</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+        <div class="sdg-metric reveal delay-4">
+          <div class="sdg-metric-tag">[03]</div>
+          <div class="sdg-metric-label">Trips Consolidated</div>
+          <div class="sdg-metric-value" id="sdg-trips-consol">0</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+        <div class="sdg-metric reveal delay-2">
+          <div class="sdg-metric-tag">[04]</div>
+          <div class="sdg-metric-label">Fuel Saved (est.)</div>
+          <div class="sdg-metric-value" id="sdg-fuel-saved">0 L</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+        <div class="sdg-metric reveal delay-3">
+          <div class="sdg-metric-tag">[05]</div>
+          <div class="sdg-metric-label">CO₂ Reduction (est.)</div>
+          <div class="sdg-metric-value" id="sdg-co2-reduction">0 t</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+        <div class="sdg-metric reveal delay-4">
+          <div class="sdg-metric-tag">[06]</div>
+          <div class="sdg-metric-label">Waste Diverted (est.)</div>
+          <div class="sdg-metric-value" id="sdg-waste-diverted">0 t</div>
+          <div class="sdg-metric-est">(est.) — prototype demo data</div>
+        </div>
+      </div>
+
+      <p class="sdg-disclaimer reveal delay-5">
+        * All environmental values are estimates for prototype demonstration purposes only.
+        Actual measurements require real operational data.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §20 — APP PREVIEW
+       ========================================================= -->
+  <section id="s20-app-preview" class="snap-section" aria-label="App Preview">
+    <div class="section-inner">
+      <div class="app-preview-header">
+        <div class="section-number inv reveal">20 — App Preview</div>
+        <h2 class="text-h2 app-preview-headline reveal delay-1">
+          YOUR MOVE. YOUR ITEMS. YOUR TRIP.
+        </h2>
+        <p class="app-preview-sub reveal delay-2">
+          LipatDorm brings everything together in one clean mobile experience.
+        </p>
+      </div>
+
+      <div class="phone-carousel" aria-label="App screen previews">
+        <div class="phone-frame" data-screen="home">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: var(--clr-deep-green);">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:white;">LipatDorm</div>
+              <div style="font-size: 0.85rem; text-align: center; padding: 1rem 0; font-family: var(--font-mono); color: white;">HOME DASHBOARD</div>
+              <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.5rem; margin-top: 0.5rem; font-size: 0.55rem; color: rgba(255,255,255,0.7);">
+                Upcoming Move<br/>Nov 15 · 8:00 AM<br/><span style="color: #e88a2e;">WMSU → KCC Mall</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Home</div>
+        </div>
+
+        <div class="phone-frame" data-screen="booking">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: white;">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:var(--clr-deep-green);">Book a Move</div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;margin-top:0.3rem;">
+                <div style="background:#f0f7f4;border-radius:6px;padding:0.35rem;font-size:0.5rem;color:var(--clr-deep-green);">Pickup</div>
+                <div style="background:#f0f7f4;border-radius:6px;padding:0.35rem;font-size:0.5rem;color:var(--clr-deep-green);">Destination</div>
+                <div style="background:#f0f7f4;border-radius:6px;padding:0.35rem;font-size:0.5rem;color:var(--clr-deep-green);">Cargo</div>
+                <div style="background:var(--clr-fresh-green);border-radius:6px;padding:0.35rem;font-size:0.55rem;color:white;text-align:center;font-weight:700;margin-top:0.2rem;">Get Fare →</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Book a Move</div>
+        </div>
+
+        <div class="phone-frame active" data-screen="map">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: #e8f0e9;">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:var(--clr-deep-green);">Interactive Map</div>
+              <div style="font-size:0.75rem;text-align:center;padding:0.5rem;font-family: var(--font-mono); color: var(--clr-fresh-green); font-weight: 700;">MAP VIEW</div>
+              <div style="background:white; border-radius:6px; padding:0.4rem; font-size:0.5rem; color:var(--clr-deep-green); border: 1px solid oklch(90% 0.02 148);">
+                Showing nearby dorms and cargo matches.
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Map</div>
+        </div>
+
+        <div class="phone-frame" data-screen="sharing">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: var(--clr-rich-green);">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:white;">Cargo-Sharing</div>
+              <div style="font-size:0.7rem;text-align:center;padding:0.5rem;color:white;font-family: var(--font-mono);">MATCH FOUND</div>
+              <div style="background:rgba(255,255,255,0.1);border-radius:6px;padding:0.4rem;font-size:0.5rem;color:rgba(255,255,255,0.8);">
+                2 students matched<br/>→ KCC Mall Area<br/><span style="color:#e88a2e;">48% savings</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Cargo-Sharing</div>
+        </div>
+
+        <div class="phone-frame" data-screen="marketplace">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: white;">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:var(--clr-deep-green);">Marketplace</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;margin-top:0.3rem;">
+                <div style="background:#f0f7f4;border-radius:4px;padding:0.3rem;font-size:0.45rem;text-align:center;">Table<br/>₱350</div>
+                <div style="background:#f0f7f4;border-radius:4px;padding:0.3rem;font-size:0.45rem;text-align:center;">Fan<br/>FREE</div>
+                <div style="background:#f0f7f4;border-radius:4px;padding:0.3rem;font-size:0.45rem;text-align:center;">Drawers<br/>₱150</div>
+                <div style="background:#f0f7f4;border-radius:4px;padding:0.3rem;font-size:0.45rem;text-align:center;">Cooker<br/>₱150</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Marketplace</div>
+        </div>
+
+        <div class="phone-frame" data-screen="tracking">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: #f4f7f4;">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:var(--clr-deep-green);">Live Tracking</div>
+              <div style="font-size:0.75rem;text-align:center;padding:0.5rem;font-family: var(--font-mono);">EN ROUTE</div>
+              <div style="background:var(--clr-light-green);border-radius:6px;padding:0.4rem;font-size:0.5rem;color:var(--clr-deep-green);">
+                En Route · 8 min away<br/>ETA: 8:42 AM
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Tracking</div>
+        </div>
+
+        <div class="phone-frame" data-screen="profile">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background: var(--clr-charcoal);">
+            <div class="phone-screen-content">
+              <div class="phone-screen-title" style="color:white;">Profile</div>
+              <div style="text-align:center;padding:0.5rem;font-size:0.7rem;color:white;font-family: var(--font-mono);">USER PROFILE</div>
+              <div style="font-size:0.55rem;color:rgba(255,255,255,0.6);text-align:center;">
+                Maria S.<br/><span style="color:#e88a2e;">Rating: 4.9 · 12 trips</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Profile</div>
+        </div>
+      </div>
+
+      <div class="carousel-nav reveal delay-4">
+        <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous screen">‹</button>
+        <button class="carousel-nav-btn" id="carousel-next" aria-label="Next screen">›</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       §21 — FINAL CALL TO ACTION
+       ========================================================= -->
+  <section id="s21-final-cta" class="snap-section" aria-label="Final Call to Action">
+    <div class="cta-bg" aria-hidden="true"></div>
+
+    <div class="cta-inner">
+      <div class="cta-sdg-pill reveal">
+        <span class="pill pill-sdg">LipatDorm × SDG 12</span>
+      </div>
+
+      <h2 class="cta-headline reveal delay-1">
+        READY TO MOVE SMARTER?
+      </h2>
+
+      <p class="cta-tagline reveal delay-2">
+        Move what you need. Share when you can. Reuse what still matters.
+      </p>
+
+      <div class="btn-group reveal delay-3" style="justify-content: center;">
+        <button class="btn btn-primary" data-scroll-to="s05-booking" id="cta-book-btn"
+                style="font-size: 1rem; padding: 1rem 2.5rem;">
+          Book a Move →
+        </button>
+        <button class="btn btn-ghost" data-scroll-to="s01-hero" id="cta-explore-btn"
+                style="font-size: 1rem; padding: 1rem 2.5rem;">
+          Explore LipatDorm
+        </button>
+      </div>
+
+      <p class="cta-sdg-message reveal delay-4">
+        LipatDorm supports SDG 12 by encouraging responsible consumption,
+        reuse, resource sharing, and more efficient transportation.
+      </p>
+
+      <nav class="cta-footer-links reveal delay-5" aria-label="Footer links">
+        <a href="#" class="cta-footer-link">Privacy Policy</a>
+        <a href="#" class="cta-footer-link">Terms of Service</a>
+        <a href="#" class="cta-footer-link">Contact</a>
+        <a href="#" class="cta-footer-link">About LipatDorm</a>
+        <span class="cta-footer-link">© 2025 LipatDorm</span>
+      </nav>
+    </div>
+  </section>
+
+</main><!-- end #scroll-container -->
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<!-- Leaflet.js -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        ></script>
+
+<!-- LipatDorm App -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
